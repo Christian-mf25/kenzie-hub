@@ -26,9 +26,11 @@ const RegisterForm = () => {
 	const handleForm = (data) => {
 
 		console.log(data)
-		axios.post("https://kenziehub.herokuapp.com/users",)
-			.then(response => { history.push("/") })
-			.catch((e) => console.log(e))
+		// axios.post("https://kenziehub.herokuapp.com/users",)
+		// 	.then(response => { 
+				history.push("/") 
+			// })
+			// .catch((e) => console.log(e))
 
 	}
 
