@@ -1,18 +1,20 @@
-import { Button, TextField, Alert } from "@material-ui/core"
+import { Link, useHistory, Redirect } from "react-router-dom"
+import { Button, TextField} from "@material-ui/core"
 import { yupResolver } from "@hookform/resolvers/yup"
-import { Link, useHistory } from "react-router-dom"
 import { useForm } from "react-hook-form"
 import { toast } from "react-toastify"
 import * as yup from "yup"
 import axios from "axios"
 
 
-const LoginForm = () => {
+const LoginForm = ({ setAuthenticated, authenticated }) => {
 
 	const history = useHistory()
 
 	const schema = yup.object().shape({
+
 		email: yup.string().email("Email inválido").required("Email obrigatório"),
+
 		password: yup.string().min(8, "Mínimo de 8 dígitos")
 			.matches(
 				/^((?=.*[!@#$%^&*()\-_=+{};:,<.>]){1})(?=.*\d)((?=.*[a-z]){1})((?=.*[A-Z]){1}).*$/,
@@ -23,18 +25,25 @@ const LoginForm = () => {
 	const { register, handleSubmit, formState: { errors } } = useForm({ resolver: yupResolver(schema) })
 
 	const handleForm = (data) => {
-		console.log(data)
 
 		axios
 			.post("https://kenziehub.herokuapp.com/sessions", data)
 			.then(response => {
-				console.log(response, data)
+
 				localStorage.clear()
+				setAuthenticated(true)
+				
 				toast.success(`Bem vindo! ${response.data.user.name}`)
-				localStorage.setItem("token", JSON.stringify(response.data.token))
+
+				localStorage.setItem("@KenzieHub:token", JSON.stringify(response.data.token))
+				localStorage.setItem("@KenzieHub:user", JSON.stringify(response.data.user))
 				history.push("/home")
 			})
-			.catch((e) => toast.error("tente outro email"))
+			.catch((_) => toast.error("tente outro email"))
+	}
+
+	if (authenticated) {
+		return <Redirect to="/home" />
 	}
 
 	return (
@@ -76,9 +85,9 @@ const LoginForm = () => {
 			</form>
 
 			<p>
-				Não possui conta ainda? 
+				Não possui conta ainda?
 				<Link to="/register">
-					 Cadastre-se
+					Cadastre-se
 				</Link>
 			</p>
 

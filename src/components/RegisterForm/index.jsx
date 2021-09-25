@@ -1,15 +1,15 @@
+import { useHistory, Redirect } from "react-router-dom"
 import { TextField, Button } from "@material-ui/core"
 import { yupResolver } from "@hookform/resolvers/yup"
-import { useHistory } from "react-router-dom"
 import { useForm } from "react-hook-form"
 import { toast } from "react-toastify"
 import * as yup from "yup"
 import axios from "axios"
 
-const RegisterForm = () => {
+const RegisterForm = ({ authenticated }) => {
 
 	const history = useHistory()
-	
+
 	const schema = yup.object().shape({
 		name: yup.string().required("Nome obrigatório"),
 		email: yup.string().email("Email inválido").required("Email obrigatório"),
@@ -38,6 +38,10 @@ const RegisterForm = () => {
 			.catch((_) => toast.error("tente outro email"))
 	}
 
+	if (authenticated) {
+		return <Redirect to="/home" />
+	}
+
 	return (
 
 		<form onSubmit={handleSubmit(handleForm)}>
@@ -50,8 +54,8 @@ const RegisterForm = () => {
 					variant="outlined"
 					margin="normal"
 					{...register("name")}
-          error={!!errors.name}
-          helperText={errors.name?.message}
+					error={!!errors.name}
+					helperText={errors.name?.message}
 				/>
 
 				<TextField
@@ -61,8 +65,8 @@ const RegisterForm = () => {
 					variant="outlined"
 					margin="normal"
 					{...register("email")}
-          error={!!errors.email}
-          helperText={errors.email?.message}
+					error={!!errors.email}
+					helperText={errors.email?.message}
 				/>
 
 				<TextField
@@ -72,8 +76,8 @@ const RegisterForm = () => {
 					variant="outlined"
 					margin="normal"
 					{...register("contact")}
-          error={!!errors.contact}
-          helperText={errors.contact?.message}
+					error={!!errors.contact}
+					helperText={errors.contact?.message}
 				/>
 
 				<TextField
@@ -83,8 +87,8 @@ const RegisterForm = () => {
 					variant="outlined"
 					margin="normal"
 					{...register("bio")}
-          error={!!errors.bio}
-          helperText={errors.bio?.message}
+					error={!!errors.bio}
+					helperText={errors.bio?.message}
 				/>
 
 				<TextField
@@ -94,8 +98,8 @@ const RegisterForm = () => {
 					variant="outlined"
 					margin="normal"
 					{...register("course_module")}
-          error={!!errors.course_module}
-          helperText={errors.course_module?.message}
+					error={!!errors.course_module}
+					helperText={errors.course_module?.message}
 				/>
 
 				<TextField
@@ -105,8 +109,8 @@ const RegisterForm = () => {
 					variant="outlined"
 					margin="normal"
 					{...register("password")}
-          error={!!errors.password}
-          helperText={errors.password?.message}
+					error={!!errors.password}
+					helperText={errors.password?.message}
 				/>
 
 				<TextField

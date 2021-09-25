@@ -1,11 +1,14 @@
 import LoginForm from "../../components/LoginForm"
 
-const Login = () => {
+const Login = ({ authenticated, setAuthenticated }) => {
 
 	return (
 
 		<div>
-			<LoginForm />
+			<LoginForm
+				authenticated={authenticated}
+				setAuthenticated={setAuthenticated}
+			/>
 		</div>
 	)
 }
