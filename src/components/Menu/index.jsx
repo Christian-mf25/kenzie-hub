@@ -6,6 +6,7 @@ const Menu = ({ setAuthenticated, setTechnology, technology }) => {
 	const history = useHistory()
 
 	const sendTo = (path) => {
+		setTechnology(false)
 		return history.push(path)
 	}
 
