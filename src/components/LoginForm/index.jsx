@@ -1,10 +1,11 @@
 import { Link, useHistory, Redirect } from "react-router-dom"
-import { Button, TextField} from "@material-ui/core"
+import { Button, TextField } from "@material-ui/core"
 import { yupResolver } from "@hookform/resolvers/yup"
 import { useForm } from "react-hook-form"
 import { toast } from "react-toastify"
 import * as yup from "yup"
 import axios from "axios"
+import "./style.css"
 
 
 const LoginForm = ({ setAuthenticated, authenticated }) => {
@@ -32,8 +33,8 @@ const LoginForm = ({ setAuthenticated, authenticated }) => {
 
 				localStorage.clear()
 				setAuthenticated(true)
-				
-				toast.success(`Bem vindo! ${response.data.user.name}`)
+
+				toast.success(`Bem vindo, ${response.data.user.name}!`)
 
 				localStorage.setItem("@KenzieHub:token", JSON.stringify(response.data.token))
 				localStorage.setItem("@KenzieHub:user", JSON.stringify(response.data.user))
@@ -47,11 +48,17 @@ const LoginForm = ({ setAuthenticated, authenticated }) => {
 	}
 
 	return (
-		<section>
+		<section
+			className="containerForm"
+		>
+			<h1 className="title">KenzieHub</h1>
+			<form
+				onSubmit={handleSubmit(handleForm)}
+				className="login-form-style"
+			>
 
-			<form onSubmit={handleSubmit(handleForm)}>
-
-				<div>
+				<div
+					className="input-login" >
 					<TextField
 						label="Email"
 						color="info"
@@ -65,6 +72,7 @@ const LoginForm = ({ setAuthenticated, authenticated }) => {
 
 					<TextField
 						label="Senha"
+						type="password"
 						color="info"
 						size="small"
 						variant="outlined"
@@ -75,12 +83,15 @@ const LoginForm = ({ setAuthenticated, authenticated }) => {
 					/>
 				</div>
 
-				<Button
-					color="info"
-					variant="contained"
-					type="submit" >
-					Logar
-				</Button>
+				<div>
+					<Button
+						className="button-login"
+						color="info"
+						variant="contained"
+						type="submit" >
+						Logar
+					</Button>
+				</div>
 
 			</form>
 

@@ -1,0 +1,46 @@
+.containerForm{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+
+	height: 100vh;
+	width: 100vw;
+
+	background-color: #d4cfce;
+}
+
+.css-1rv3ei8-MuiFormControl-root-MuiTextField-root{
+	max-width: 229px;
+}
+
+.form-style{
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: center;
+
+	background-color: #fff;
+	height: 85vh;
+	width: 80vw;
+	border-radius: 20px;
+
+	/* margin: 0; */
+}
+
+.sla{
+	margin: 20px;
+}
+
+.input-style{
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: center;
+}
+
+@media (min-width: 400px){
+	.form-style{
+		max-width: 470px;
+	}
+}

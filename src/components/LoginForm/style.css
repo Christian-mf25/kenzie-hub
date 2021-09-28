@@ -1,0 +1,36 @@
+.title{
+	font-size: 3rem;
+	color: #343061;
+	margin: 10px;
+}
+
+.login-form-style{
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: space-around;
+
+	background-color: #fff;
+
+	width: 75vw;
+	height: 35vh;
+
+	border-radius: 20px;
+}
+
+.input-login{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.button-login{
+	margin-top: 10px;
+}
+
+@media (min-width: 400px){
+	.login-form-style{
+		max-width: 360px;
+	}
+}

@@ -1,0 +1,49 @@
+.cardTech{
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	align-items: center;
+	justify-content: space-around;
+
+	margin: 0 auto;
+
+
+	width: 85vw;
+
+	background-image: linear-gradient(90deg, #8585fd, #ff9595);
+
+	border-radius: 15px;
+
+	margin-bottom: 5px;
+}
+
+.nameTech{
+	font-size: 1.1rem;
+	color: #ffffff;
+	font-weight: 600;
+
+	width: 90px;
+}
+
+.statusTech{
+	font-size: 1.1rem;
+	color: #fff;
+	font-weight: 600;
+
+	width: 75px;
+}
+
+.removeButton{
+	width: 20%;
+}
+
+.icon{
+	color: #fff;
+	font-size: 1.4rem;
+}
+
+@media (min-width: 500px){
+	.cardTech{
+		max-width: 630px;
+	}
+} 

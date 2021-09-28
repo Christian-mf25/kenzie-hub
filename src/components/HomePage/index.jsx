@@ -1,7 +1,8 @@
 import { Redirect } from "react-router-dom"
+import Card from "../Card"
 
-const HomePage = ({ authenticated }) => {
 
+const HomePage = ({ authenticated, tech, handleDeleteTech }) => {
 
 	if (!authenticated) {
 		return <Redirect to="/" />
@@ -9,9 +10,20 @@ const HomePage = ({ authenticated }) => {
 
 	return (
 		<div>
-			<p>wegerg</p>
-			<p>rgwereqg</p>
-			<p>aqrgheqrg</p>
+			<h1 className="titleTech">Competencias</h1>
+			
+			{
+				tech?.map(item => (
+					<div>
+						<Card
+							id={item.id}
+							title={item.title}
+							status={item.status}
+							handleClick={handleDeleteTech}
+						/>
+					</div>
+				))
+			}
 		</div>
 	)
 }

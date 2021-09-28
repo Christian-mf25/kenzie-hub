@@ -1,0 +1,36 @@
+.createTech{
+	position: absolute;
+	top: 59%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	height: 100vh;
+	width: 100vw;
+
+	background-color: #a8a8a8b0;
+}
+
+.createTechForm{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	background-color: #ffffff;
+
+	position: absolute;
+	top: 40%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+
+	width: 80vw;
+	height: 35vh;
+
+	border-radius: 20px;
+}
+
+.formNewTech{
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	align-items: center;
+	justify-content: space-between;
+}

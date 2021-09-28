@@ -1,5 +1,6 @@
 import { Toolbar, AppBar, MenuItem, Button, Box, Typography } from "@material-ui/core"
 import { useHistory } from "react-router"
+import "./style.css"
 
 const Menu = ({ setAuthenticated, setTechnology, technology }) => {
 
@@ -17,11 +18,11 @@ const Menu = ({ setAuthenticated, setTechnology, technology }) => {
 
 	const handleShowTechnology = () => {
 		setTechnology(!technology)
-		console.log(technology)
 	}
 
 	return (
-		<Box sx={{ flexGrow: 1 }}>
+		<Box sx={{ flexGrow: 1 }}
+		className="nav">
 			<AppBar position="static"
 				style={{ background: "#07183c" }}
 			>
@@ -45,6 +46,7 @@ const Menu = ({ setAuthenticated, setTechnology, technology }) => {
 					</Typography>
 
 					<Button
+						className="logoutButton"
 						onClick={() => handleLogout()}
 						color="inherit"
 						size="large">

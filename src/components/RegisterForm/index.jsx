@@ -1,10 +1,11 @@
-import { useHistory, Redirect } from "react-router-dom"
+import { useHistory, Redirect, Link } from "react-router-dom"
 import { TextField, Button } from "@material-ui/core"
 import { yupResolver } from "@hookform/resolvers/yup"
 import { useForm } from "react-hook-form"
 import { toast } from "react-toastify"
 import * as yup from "yup"
 import axios from "axios"
+import "./style.css"
 
 const RegisterForm = ({ authenticated }) => {
 
@@ -28,7 +29,6 @@ const RegisterForm = ({ authenticated }) => {
 	const { register, handleSubmit, formState: { errors } } = useForm({ resolver: yupResolver(schema) })
 
 	const handleForm = (data) => {
-		console.log(data)
 		axios
 			.post("https://kenziehub.herokuapp.com/users", data)
 			.then((_) => {
@@ -44,96 +44,116 @@ const RegisterForm = ({ authenticated }) => {
 
 	return (
 
-		<form onSubmit={handleSubmit(handleForm)}>
+		<div className="containerForm">
 
-			<div>
-				<TextField
-					label="Nome"
-					color="info"
-					size="small"
-					variant="outlined"
-					margin="normal"
-					{...register("name")}
-					error={!!errors.name}
-					helperText={errors.name?.message}
-				/>
+			<form
+				onSubmit={handleSubmit(handleForm)}
+				className="form-style"
+			>
 
-				<TextField
-					label="Email"
-					color="info"
-					size="small"
-					variant="outlined"
-					margin="normal"
-					{...register("email")}
-					error={!!errors.email}
-					helperText={errors.email?.message}
-				/>
+				<div
+					className="input-style"
+				>
+					
+					<TextField
+						label="Nome"
+						color="info"
+						size="small"
+						variant="outlined"
+						margin="dense"
+						className="sla"
+						{...register("name")}
+						error={!!errors.name}
+						helperText={errors.name?.message}
+					/>
 
-				<TextField
-					label="Contato"
-					color="info"
-					size="small"
-					variant="outlined"
-					margin="normal"
-					{...register("contact")}
-					error={!!errors.contact}
-					helperText={errors.contact?.message}
-				/>
+					<TextField
+						label="Email"
+						color="info"
+						size="small"
+						variant="outlined"
+						margin="dense"
+						{...register("email")}
+						error={!!errors.email}
+						helperText={errors.email?.message}
+					/>
 
-				<TextField
-					label="Bio"
-					color="info"
-					size="small"
-					variant="outlined"
-					margin="normal"
-					{...register("bio")}
-					error={!!errors.bio}
-					helperText={errors.bio?.message}
-				/>
+					<TextField
+						label="Contato"
+						color="info"
+						size="small"
+						variant="outlined"
+						margin="dense"
+						{...register("contact")}
+						error={!!errors.contact}
+						helperText={errors.contact?.message}
+					/>
 
-				<TextField
-					label="Módulos do curso"
-					color="info"
-					size="small"
-					variant="outlined"
-					margin="normal"
-					{...register("course_module")}
-					error={!!errors.course_module}
-					helperText={errors.course_module?.message}
-				/>
+					<TextField
+						label="Bio"
+						color="info"
+						size="small"
+						variant="outlined"
+						margin="dense"
+						{...register("bio")}
+						error={!!errors.bio}
+						helperText={errors.bio?.message}
+					/>
 
-				<TextField
-					label="Senha"
-					color="info"
-					size="small"
-					variant="outlined"
-					margin="normal"
-					{...register("password")}
-					error={!!errors.password}
-					helperText={errors.password?.message}
-				/>
+					<TextField
+						label="Módulos do curso"
+						color="info"
+						size="small"
+						variant="outlined"
+						margin="dense"
+						{...register("course_module")}
+						error={!!errors.course_module}
+						helperText={errors.course_module?.message}
+					/>
 
-				<TextField
-					label="Confirme sua senha"
-					color="info"
-					size="small"
-					variant="outlined"
-					margin="normal"
-					{...register("password_confirm")}
-					error={!!errors.password_confirm}
-					helperText={errors.password_confirm?.message}
-				/>
-			</div>
+					<TextField
+						label="Senha"
+						type="password"
+						color="info"
+						size="small"
+						variant="outlined"
+						margin="dense"
+						{...register("password")}
+						error={!!errors.password}
+						helperText={errors.password?.message}
+					/>
+
+					<TextField
+						label="Confirme sua senha"
+						type="password"
+						color="info"
+						size="small"
+						variant="outlined"
+						margin="dense"
+						{...register("password_confirm")}
+						error={!!errors.password_confirm}
+						helperText={errors.password_confirm?.message}
+					/>
+				</div>
 
 
-			<Button
-				type="submit"
-				variant="contained"
-				color="info">
-				Cadastrar-se
-			</Button>
+				<Button
+					type="submit"
+					variant="contained"
+					color="info">
+					Cadastrar-se
+				</Button>
 
-		</form>
+			</form>
+
+			<p className="account">
+				Já possui uma conta?
+				<Link to="/">
+					Logar
+				</Link>
+			</p>
+
+		</div>
 
 	)
 }

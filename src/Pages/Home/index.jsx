@@ -1,11 +1,10 @@
 import TechnologyForm from "../../components/TechnologyForm"
 import HomePage from "../../components/HomePage"
-import Menu from "../../components/Menu"
-
-import axios from "axios"
 import { useState, useEffect } from "react"
+import Menu from "../../components/Menu"
 import { toast } from "react-toastify"
-
+import axios from "axios"
+import "./style.css"
 
 const Home = ({ authenticated, setAuthenticated }) => {
 
@@ -29,7 +28,7 @@ const Home = ({ authenticated, setAuthenticated }) => {
 			})
 			.then(_ => {
 				toast.success("Tecnologia adicionada")
-				console.log(tech)
+				loadTech()
 			})
 			.catch((_) => toast.error("Esta tecnologia já foi adicionada"))
 	}
@@ -44,7 +43,21 @@ const Home = ({ authenticated, setAuthenticated }) => {
 				name: user.name
 			}
 		})
-			.then((response) => setTech(response.data.techs))
+			.then((response) =>{
+				setTech(response.data.techs)
+			} )
+
+	}
+
+	const handleDeleteTech = (id) => {
+		const filterTech = tech.filter((item) => item.id !== id)
+
+		axios.delete(`https://kenziehub.herokuapp.com/users/techs/${id}`, {
+			headers: {
+				Authorization: `Bearer ${token}`
+			}
+		})
+			.then(_ => setTech(filterTech))
 	}
 
 	useEffect(() => {
@@ -54,7 +67,7 @@ const Home = ({ authenticated, setAuthenticated }) => {
 	return (
 
 
-		<div>
+		<section className="homePage">
 
 			<Menu
 				setAuthenticated={setAuthenticated}
@@ -65,6 +78,7 @@ const Home = ({ authenticated, setAuthenticated }) => {
 			<HomePage
 				authenticated={authenticated}
 				setTechnology={setTechnology}
+				handleDeleteTech={handleDeleteTech}
 				tech={tech}
 			/>
 
@@ -73,7 +87,7 @@ const Home = ({ authenticated, setAuthenticated }) => {
 				handleForm={handleForm}
 			/>
 
-		</div>
+		</section>
 	)
 }
 

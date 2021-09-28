@@ -1,0 +1,13 @@
+.homePage{
+	position: relative;
+
+	height: 100vh;
+
+	background-color: #ebebeb;
+}
+
+.titleTech{
+	color: #4c45a8;
+
+	font-size: 1.8rem;
+}
