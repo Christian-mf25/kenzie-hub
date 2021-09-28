@@ -95,9 +95,11 @@ const LoginForm = ({ setAuthenticated, authenticated }) => {
 
 			</form>
 
-			<p>
+			<p className="account">
 				Não possui conta ainda?
-				<Link to="/register">
+				<Link 
+				className="link"
+				to="/register">
 					Cadastre-se
 				</Link>
 			</p>

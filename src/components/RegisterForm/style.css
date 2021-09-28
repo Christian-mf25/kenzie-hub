@@ -7,7 +7,7 @@
 	height: 100vh;
 	width: 100vw;
 
-	background-color: #d4cfce;
+	background-color: #ebebeb;
 }
 
 .css-1rv3ei8-MuiFormControl-root-MuiTextField-root{
@@ -24,8 +24,6 @@
 	height: 85vh;
 	width: 80vw;
 	border-radius: 20px;
-
-	/* margin: 0; */
 }
 
 .sla{
@@ -37,6 +35,18 @@
 	flex-direction: column;
 	justify-content: space-around;
 	align-items: center;
+}
+
+.account{
+	font-size: 1.2rem;
+}
+
+.link{
+	margin-left: 5px;
+	text-decoration: none;
+	font-size: 1.3rem;]
+	font-weight: bold;
+	color: #4c45a8;
 }
 
 @media (min-width: 400px){

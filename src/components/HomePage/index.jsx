@@ -10,7 +10,7 @@ const HomePage = ({ authenticated, tech, handleDeleteTech }) => {
 
 	return (
 		<div>
-			<h1 className="titleTech">Competencias</h1>
+			<h1 className="titleTech">Competências</h1>
 			
 			{
 				tech?.map(item => (

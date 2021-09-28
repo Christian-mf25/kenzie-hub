@@ -6,6 +6,12 @@
 	position: absolute;
 	right: 20px;
 
+	background-color: red;
+
 	font-size: 1.2rem;
 	font-weight: 600;
+}
+
+.css-1yz1089-MuiButtonBase-root-MuiButton-root{
+	background-color: red;
 }

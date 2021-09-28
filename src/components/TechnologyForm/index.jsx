@@ -1,10 +1,11 @@
 import { TextField, Button } from "@material-ui/core"
 import { yupResolver } from "@hookform/resolvers/yup"
+import { CgCloseO } from "react-icons/cg"
 import { useForm } from "react-hook-form"
 import * as yup from "yup"
 import "./style.css"
 
-const TechnologyForm = ({ technology, handleForm }) => {
+const TechnologyForm = ({ setTechnology, technology, handleForm }) => {
 
 	const schema = yup.object().shape({
 		title: yup.string().required("Campo obrigatório"),
@@ -24,6 +25,12 @@ const TechnologyForm = ({ technology, handleForm }) => {
 
 					<div
 						className="createTechForm">
+
+						<button
+							className="minTech"
+							onClick={() => setTechnology(!technology)}>
+							<CgCloseO />
+						</button>
 
 						<form
 							onSubmit={handleSubmit(handleForm)}

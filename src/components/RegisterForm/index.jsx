@@ -54,7 +54,7 @@ const RegisterForm = ({ authenticated }) => {
 				<div
 					className="input-style"
 				>
-					
+
 					<TextField
 						label="Nome"
 						color="info"
@@ -148,7 +148,9 @@ const RegisterForm = ({ authenticated }) => {
 
 			<p className="account">
 				Já possui uma conta?
-				<Link to="/">
+				<Link
+					className="link"
+					to="/">
 					Logar
 				</Link>
 			</p>

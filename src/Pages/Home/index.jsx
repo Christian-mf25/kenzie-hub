@@ -43,9 +43,9 @@ const Home = ({ authenticated, setAuthenticated }) => {
 				name: user.name
 			}
 		})
-			.then((response) =>{
+			.then((response) => {
 				setTech(response.data.techs)
-			} )
+			})
 
 	}
 
@@ -83,6 +83,7 @@ const Home = ({ authenticated, setAuthenticated }) => {
 			/>
 
 			<TechnologyForm
+				setTechnology={setTechnology}
 				technology={technology}
 				handleForm={handleForm}
 			/>
